@@ -12,8 +12,22 @@ class Pagecontrol extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    void arrowButtonPress() {}
-    void onPress() {}
+    void arrowButtonPress() {
+      if (_controller.page!.toInt() < 2) {
+        // If not on the last page, move to the next page
+        _controller.nextPage(
+          duration: const Duration(milliseconds: 300),
+          curve: Curves.easeInOut,
+        );
+      } else {
+        Navigator.pushNamed(context, '/home');
+      }
+    }
+
+    void onSkipPress() {
+      Navigator.popAndPushNamed(context, '/home');
+    }
+
     return Scaffold(
       backgroundColor: Color(0xff41965F),
       // backgroundColor: Color(0xffa3c662),
@@ -48,7 +62,7 @@ class Pagecontrol extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   MyTextButton(
-                    ontap: onPress,
+                    ontap: onSkipPress,
                     text: 'Skip',
                   ),
                   ArrowButton(
