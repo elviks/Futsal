@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:futsalapp/pages/auth%20page/login_page.dart';
+import 'package:futsalapp/pages/auth%20page/register_page.dart';
 import 'package:futsalapp/pages/onboard/pagecontrol.dart';
 
 import 'pages/home_page.dart';
@@ -16,7 +18,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Pagecontrol(),
       routes: {
-        '/home': (context) => HomePage(),
+        '/login': (context) => LoginPage(),
+        '/register': (context) => RegisterPage(),
       },
     );
   }

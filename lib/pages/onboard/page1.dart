@@ -24,7 +24,7 @@ class Page1 extends StatelessWidget {
               SizedBox(
                 width: 300,
                 child: RichText(
-                  textAlign: TextAlign.center, // Center-align the entire text
+                  textAlign: TextAlign.center,
                   text: TextSpan(
                     style: GoogleFonts.poppins(
                       textStyle: TextStyle(

@@ -20,58 +20,60 @@ class Pagecontrol extends StatelessWidget {
           curve: Curves.easeInOut,
         );
       } else {
-        Navigator.pushNamed(context, '/home');
+        Navigator.pushNamed(context, '/login');
       }
     }
 
     void onSkipPress() {
-      Navigator.popAndPushNamed(context, '/home');
+      Navigator.popAndPushNamed(context, '/login');
     }
 
     return Scaffold(
       backgroundColor: Color(0xff41965F),
       // backgroundColor: Color(0xffa3c662),
       body: SafeArea(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Image.asset(
-              "lib/assets/logo/logo2.png",
-              width: 150,
-            ),
-            SizedBox(
-              height: 600,
-              child: PageView(
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset(
+                "lib/assets/logo/logo2.png",
+                width: 150,
+              ),
+              SizedBox(
+                height: 600,
+                child: PageView(
+                  controller: _controller,
+                  children: [
+                    Page1(),
+                    Page2(),
+                    Page3(),
+                  ],
+                ),
+              ),
+              SmoothPageIndicator(
                 controller: _controller,
-                children: [
-                  Page1(),
-                  Page2(),
-                  Page3(),
-                ],
+                count: 3,
+                effect: ExpandingDotsEffect(
+                    dotColor: Colors.white, activeDotColor: Colors.white),
               ),
-            ),
-            SmoothPageIndicator(
-              controller: _controller,
-              count: 3,
-              effect: ExpandingDotsEffect(
-                  dotColor: Colors.white, activeDotColor: Colors.white),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  MyTextButton(
-                    ontap: onSkipPress,
-                    text: 'Skip',
-                  ),
-                  ArrowButton(
-                    ontap: arrowButtonPress,
-                  ),
-                ],
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    MyTextButton(
+                      ontap: onSkipPress,
+                      text: 'Skip',
+                    ),
+                    ArrowButton(
+                      ontap: arrowButtonPress,
+                    ),
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
